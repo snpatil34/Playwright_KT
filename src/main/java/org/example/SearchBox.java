@@ -14,8 +14,10 @@ public class SearchBox {
         String searchInput = "Locators";
         Playwright playwright = Playwright.create();
         BrowserType chrome = playwright.chromium();
-        Browser browser = chrome.launch(new BrowserType.LaunchOptions().setHeadless(false).setExecutablePath(Paths.get("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")));
-        //Browser browser = chrome.launch(new BrowserType.LaunchOptions().setHeadless(false));
+        Browser browser = chrome.launch(new BrowserType.LaunchOptions()
+                .setHeadless(false)
+                .setExecutablePath(Paths.get("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe")) );
+
         Page page = browser.newPage();
 
         page.navigate("https://playwright.dev/");
@@ -28,13 +30,9 @@ public class SearchBox {
             System.out.println("Navigated to Playwright for java");
             page.waitForTimeout(2000);
             page.locator("//button[@aria-label='Search']").click();
-            //page.waitForTimeout(2000);
-            //page.locator("//kbd[1]//*[name()='svg']").click();
             page.fill("#docsearch-input", searchInput);
             System.out.println();
-            //page.locator("//a[@href='/java/docs/locators']//div[@class='DocSearch-Hit-Container']//div[@class='DocSearch-Hit-action']").click();
             page.locator("(//div[@class='DocSearch-Hit-action'])[1]").click();
-            //Thread.sleep(10000);
             page.waitForTimeout(2000);
             String expectedHeader = page.locator("div[class='theme-doc-markdown markdown'] header h1").innerText();
             if (searchInput.equals(expectedHeader)){
