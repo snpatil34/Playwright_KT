@@ -24,6 +24,9 @@ public class SearchEngine {
         String title =page.locator(".navbar__title.text--truncate").innerText();
         if (title.equals(expectedString)) {
             System.out.println("Navigated to Playwright for java");
+        }else{
+            System.out.println("Navigated to Playwright for java");
+            page.close();
         }
     }
     public static void clickOnSearch(String searchInput){

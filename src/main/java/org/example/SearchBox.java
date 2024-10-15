@@ -37,6 +37,8 @@ public class SearchBox {
             String expectedHeader = page.locator("div[class='theme-doc-markdown markdown'] header h1").innerText();
             if (searchInput.equals(expectedHeader)){
                 System.out.println(searchInput +" page has been opened");
+            }else{
+                System.out.println("Unable to open "+searchInput +" page");
             }
             page.close();
             playwright.close();
@@ -44,6 +46,7 @@ public class SearchBox {
         else {
             System.out.println("Unable to Navigate in Playwright for Java");
             page.close();
+            playwright.close();
         }
 
     }
