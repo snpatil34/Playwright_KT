@@ -31,7 +31,6 @@ public class SearchBox {
             page.waitForTimeout(2000);
             page.locator("//button[@aria-label='Search']").click();
             page.fill("#docsearch-input", searchInput);
-            System.out.println();
             page.locator("(//div[@class='DocSearch-Hit-action'])[1]").click();
             page.waitForTimeout(2000);
             String expectedHeader = page.locator("div[class='theme-doc-markdown markdown'] header h1").innerText();
@@ -40,14 +39,13 @@ public class SearchBox {
             }else{
                 System.out.println("Unable to open "+searchInput +" page");
             }
-            page.close();
-            playwright.close();
+
         }
         else {
             System.out.println("Unable to Navigate in Playwright for Java");
-            page.close();
-            playwright.close();
         }
+        page.close();
+        playwright.close();
 
     }
 
