@@ -40,7 +40,10 @@ public class SearchEngine {
         page.locator("(//div[@class='DocSearch-Hit-action'])[1]").click();
         String expectedHeader = page.locator("div[class='theme-doc-markdown markdown'] header h1").innerText();
        Assert.assertTrue("unable to open " +header +" page",expectedHeader.contains(header));
-       page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshot.png")).setFullPage(true));
+       if(header.equals("Locators"))
+       page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshot_locator.png")).setFullPage(true));
+        else
+            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshot_selector.png")).setFullPage(true));
 
     }
 
